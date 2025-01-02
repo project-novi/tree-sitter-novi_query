@@ -1,0 +1,411 @@
+[
+  {
+    "type": "atom_any",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "atom_group",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "atom_any",
+          "named": true
+        },
+        {
+          "type": "atom_group",
+          "named": true
+        },
+        {
+          "type": "atom_neg",
+          "named": true
+        },
+        {
+          "type": "atom_relation",
+          "named": true
+        },
+        {
+          "type": "atom_subject",
+          "named": true
+        },
+        {
+          "type": "atom_tag",
+          "named": true
+        },
+        {
+          "type": "query_and",
+          "named": true
+        },
+        {
+          "type": "query_or",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "atom_neg",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "atom_any",
+          "named": true
+        },
+        {
+          "type": "atom_group",
+          "named": true
+        },
+        {
+          "type": "atom_neg",
+          "named": true
+        },
+        {
+          "type": "atom_relation",
+          "named": true
+        },
+        {
+          "type": "atom_subject",
+          "named": true
+        },
+        {
+          "type": "atom_tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "atom_relation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "subject_any",
+          "named": true
+        },
+        {
+          "type": "subject_named",
+          "named": true
+        },
+        {
+          "type": "subject_type_only",
+          "named": true
+        },
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "atom_subject",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "atom_any",
+          "named": true
+        },
+        {
+          "type": "atom_group",
+          "named": true
+        },
+        {
+          "type": "atom_neg",
+          "named": true
+        },
+        {
+          "type": "atom_relation",
+          "named": true
+        },
+        {
+          "type": "atom_subject",
+          "named": true
+        },
+        {
+          "type": "atom_tag",
+          "named": true
+        },
+        {
+          "type": "subject_any",
+          "named": true
+        },
+        {
+          "type": "subject_named",
+          "named": true
+        },
+        {
+          "type": "subject_type_only",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "atom_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "query",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "atom_any",
+          "named": true
+        },
+        {
+          "type": "atom_group",
+          "named": true
+        },
+        {
+          "type": "atom_neg",
+          "named": true
+        },
+        {
+          "type": "atom_relation",
+          "named": true
+        },
+        {
+          "type": "atom_subject",
+          "named": true
+        },
+        {
+          "type": "atom_tag",
+          "named": true
+        },
+        {
+          "type": "query_and",
+          "named": true
+        },
+        {
+          "type": "query_or",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "query_and",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "atom_any",
+          "named": true
+        },
+        {
+          "type": "atom_group",
+          "named": true
+        },
+        {
+          "type": "atom_neg",
+          "named": true
+        },
+        {
+          "type": "atom_relation",
+          "named": true
+        },
+        {
+          "type": "atom_subject",
+          "named": true
+        },
+        {
+          "type": "atom_tag",
+          "named": true
+        },
+        {
+          "type": "query_and",
+          "named": true
+        },
+        {
+          "type": "query_or",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "query_or",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "atom_any",
+          "named": true
+        },
+        {
+          "type": "atom_group",
+          "named": true
+        },
+        {
+          "type": "atom_neg",
+          "named": true
+        },
+        {
+          "type": "atom_relation",
+          "named": true
+        },
+        {
+          "type": "atom_subject",
+          "named": true
+        },
+        {
+          "type": "atom_tag",
+          "named": true
+        },
+        {
+          "type": "query_and",
+          "named": true
+        },
+        {
+          "type": "query_or",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "subject_any",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "subject_named",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "subject_type_only",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "tag_plain",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\n",
+    "named": false
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "comment",
+    "named": true
+  },
+  {
+    "type": "tag_plain",
+    "named": true
+  }
+]
