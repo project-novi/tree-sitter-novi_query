@@ -101,10 +101,6 @@
         {
           "type": "subject_type_only",
           "named": true
-        },
-        {
-          "type": "tag",
-          "named": true
         }
       ]
     }

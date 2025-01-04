@@ -216,7 +216,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "tag"
+          "name": "_subject"
         },
         {
           "type": "STRING",

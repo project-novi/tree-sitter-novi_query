@@ -12,7 +12,7 @@ module.exports = grammar({
 
   extras: $ => [$.comment, /[ \t]/],
 
-  rules: {s
+  rules: {
     query: $ => seq(repeat($._newline), $._query, repeat($._newline)),
 
     _query: $ => choice($._atom, $.query_and, $.query_or),
@@ -35,7 +35,7 @@ module.exports = grammar({
     atom_group: $ =>
       seq("(", repeat($._newline), $._query, repeat($._newline), ")"),
     atom_subject: $ => seq($._subject, ":", $._atom),
-    atom_relation: $ => seq($._subject, "-", $.tag, "-", $._subject),
+    atom_relation: $ => seq($._subject, "-", $._subject, "-", $._subject),
 
     _subject: $ => choice($.subject_any, $.subject_named, $.subject_type_only),
     subject_any: _ => seq("[", "]"),
