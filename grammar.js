@@ -13,38 +13,29 @@ module.exports = grammar({
   extras: $ => [$.comment, /[ \t]/],
 
   rules: {
-    query: $ => seq(repeat($._newline), $._query, repeat($._newline)),
+    body: $ => seq("{", sep_newline($, $.subject), "}"),
 
-    _query: $ => choice($._atom, $.query_and, $.query_or),
-    query_and: $ =>
-      prec.left(1, seq($._query, choice(",", repeat1($._newline)), $._query)),
-    query_or: $ => prec.left(2, seq($._query, "/", $._query)),
+    subject_ref: $ => seq("@", sep1(".", $.tag)),
 
-    _atom: $ =>
-      choice(
-        $.atom_tag,
-        $.atom_neg,
-        $.atom_any,
-        $.atom_group,
-        $.atom_subject,
-        $.atom_relation
+    subject: $ =>
+      seq(
+        field("subject", $.tag),
+        field("rename", optional($.subject_ref)),
+        field("aliases", optional($.tag_group)),
+        field("relation", optional(seq(">", $.subject_ref))),
+        field("tags", optional(seq(":", $._tags))),
+        field("body", optional($.body))
       ),
-    atom_tag: $ => $.tag,
-    atom_neg: $ => seq("-", $._atom),
-    atom_any: $ => seq("(", ")"),
-    atom_group: $ =>
-      seq("(", repeat($._newline), $._query, repeat($._newline), ")"),
-    atom_subject: $ => seq($._subject, ":", $._atom),
-    atom_relation: $ => seq($._subject, "-", $._subject, "-", $._subject),
 
-    _subject: $ => choice($.subject_any, $.subject_named, $.subject_type_only),
-    subject_any: _ => seq("[", "]"),
-    subject_named: $ => seq(optional($.tag), seq("[", $.tag, "]")),
-    subject_type_only: $ => $.tag,
+    _tags: $ => choice($.tag, $.tag_and, $.tag_or, $.tag_group, $.tag_neg),
+    tag_and: $ => prec.left(1, seq($._tags, ",", $._tags)),
+    tag_or: $ => prec.left(2, seq($._tags, "/", $._tags)),
+    tag_group: $ => seq("(", sep_newline($, $._tags), ")"),
+    tag_neg: $ => seq("-", $._tags),
 
     tag: $ => choice($.tag_plain, $.string),
 
-    tag_plain: _ => token(/[\w·'_\.][\w·'_\. ]*/),
+    tag_plain: _ => token(/[\w·'_][\w·'_\- ]*/),
 
     string: $ => choice(seq('"', '"'), seq('"', $._string_contents, '"')),
     _string_contents: $ =>
@@ -52,7 +43,15 @@ module.exports = grammar({
     _string_content: _ => token.immediate(prec(1, /[^\\"\n]+/)),
     _escape_sequence: _ => token.immediate(seq("\\", /(\"|\\|\/|b|f|n|r|t|u)/)),
 
+    _separator: $ => choice(",", repeat1($._newline)),
     _newline: _ => token("\n"),
     comment: _ => token(seq("#", /.*/)),
   },
 });
+
+function sep_newline($, r) {
+  return seq(repeat($._newline), repeat(seq(r, repeat($._newline))));
+}
+function sep1(sep, r) {
+  return seq(r, repeat(seq(sep, r)));
+}
