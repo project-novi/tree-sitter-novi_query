@@ -34,6 +34,16 @@
           }
         ]
       },
+      "context": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "subject_ref",
+            "named": true
+          }
+        ]
+      },
       "identities": {
         "multiple": false,
         "required": false,

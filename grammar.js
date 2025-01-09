@@ -22,7 +22,13 @@ module.exports = grammar({
         field("subject", $.tag),
         field("identities", optional($.tag_group)),
         field("name", optional($.subject_ref)),
-        optional(seq(">", field("relation", $.subject_ref))),
+        optional(
+          seq(
+            ">",
+            field("relation", $.subject_ref),
+            optional(seq("(", field("context", $.subject_ref), ")"))
+          )
+        ),
         optional(seq(":", field("tags", $._tags))),
         field("body", optional($.body))
       ),
