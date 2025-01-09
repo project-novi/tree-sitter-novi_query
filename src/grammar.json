@@ -93,7 +93,7 @@
         },
         {
           "type": "FIELD",
-          "name": "rename",
+          "name": "name",
           "content": {
             "type": "CHOICE",
             "members": [
@@ -109,7 +109,7 @@
         },
         {
           "type": "FIELD",
-          "name": "aliases",
+          "name": "identities",
           "content": {
             "type": "CHOICE",
             "members": [

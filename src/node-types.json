@@ -24,7 +24,17 @@
     "type": "subject",
     "named": true,
     "fields": {
-      "aliases": {
+      "body": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "body",
+            "named": true
+          }
+        ]
+      },
+      "identities": {
         "multiple": false,
         "required": false,
         "types": [
@@ -34,12 +44,12 @@
           }
         ]
       },
-      "body": {
+      "name": {
         "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "body",
+            "type": "subject_ref",
             "named": true
           }
         ]
@@ -52,16 +62,6 @@
             "type": ">",
             "named": false
           },
-          {
-            "type": "subject_ref",
-            "named": true
-          }
-        ]
-      },
-      "rename": {
-        "multiple": false,
-        "required": false,
-        "types": [
           {
             "type": "subject_ref",
             "named": true
