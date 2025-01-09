@@ -55,13 +55,9 @@
         ]
       },
       "relation": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
-          {
-            "type": ">",
-            "named": false
-          },
           {
             "type": "subject_ref",
             "named": true
@@ -79,13 +75,9 @@
         ]
       },
       "tags": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
-          {
-            "type": ":",
-            "named": false
-          },
           {
             "type": "tag",
             "named": true

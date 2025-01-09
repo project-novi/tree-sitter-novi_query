@@ -20,10 +20,10 @@ module.exports = grammar({
     subject: $ =>
       seq(
         field("subject", $.tag),
-        field("name", optional($.subject_ref)),
         field("identities", optional($.tag_group)),
-        field("relation", optional(seq(">", $.subject_ref))),
-        field("tags", optional(seq(":", $._tags))),
+        field("name", optional($.subject_ref)),
+        optional(seq(">", field("relation", $.subject_ref))),
+        optional(seq(":", field("tags", $._tags))),
         field("body", optional($.body))
       ),
 

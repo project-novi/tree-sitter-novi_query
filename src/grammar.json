@@ -93,22 +93,6 @@
         },
         {
           "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SYMBOL",
-                "name": "subject_ref"
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
-        },
-        {
-          "type": "FIELD",
           "name": "identities",
           "content": {
             "type": "CHOICE",
@@ -125,22 +109,13 @@
         },
         {
           "type": "FIELD",
-          "name": "relation",
+          "name": "name",
           "content": {
             "type": "CHOICE",
             "members": [
               {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": ">"
-                  },
-                  {
-                    "type": "SYMBOL",
-                    "name": "subject_ref"
-                  }
-                ]
+                "type": "SYMBOL",
+                "name": "subject_ref"
               },
               {
                 "type": "BLANK"
@@ -149,29 +124,54 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "tags",
-          "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "SEQ",
-                "members": [
-                  {
-                    "type": "STRING",
-                    "value": ":"
-                  },
-                  {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ">"
+                },
+                {
+                  "type": "FIELD",
+                  "name": "relation",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "subject_ref"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": ":"
+                },
+                {
+                  "type": "FIELD",
+                  "name": "tags",
+                  "content": {
                     "type": "SYMBOL",
                     "name": "_tags"
                   }
-                ]
-              },
-              {
-                "type": "BLANK"
-              }
-            ]
-          }
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "FIELD",
