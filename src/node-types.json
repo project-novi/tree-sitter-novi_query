@@ -64,6 +64,16 @@
           }
         ]
       },
+      "neg": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "-",
+            "named": false
+          }
+        ]
+      },
       "relation": {
         "multiple": false,
         "required": false,

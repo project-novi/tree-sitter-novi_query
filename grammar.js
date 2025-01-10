@@ -19,6 +19,7 @@ module.exports = grammar({
 
     subject: $ =>
       seq(
+        optional(field("neg", "-")),
         field("subject", $.tag),
         field("identities", optional($.tag_group)),
         field("name", optional($.subject_ref)),
