@@ -13,32 +13,46 @@ module.exports = grammar({
   extras: $ => [$.comment, /[ \t]/],
 
   rules: {
-    body: $ => seq("{", sep_newline($, $.subject), "}"),
+    body: $ => $._expr,
 
     subject_ref: $ => seq("@", sep1(".", $.tag)),
 
     subject: $ =>
       seq(
-        optional(field("neg", "-")),
         field("subject", $.tag),
-        field("identities", optional($.tag_group)),
+        field("identities", optional($.group)),
         field("name", optional($.subject_ref)),
+        choice(
+          seq($._subject_relation, optional($._subject_body)),
+          $._subject_body
+        )
+      ),
+    _subject_relation: $ =>
+      seq(
+        ">",
+        field("relation", $.subject_ref),
+        optional(seq("(", field("context", $.subject_ref), ")"))
+      ),
+    _subject_body: $ => seq(":", field("body", $._expr)),
+
+    _expr: $ => choice($._atom, $.and_term, $.or_term),
+    and_term: $ => sep2(",", choice($.or_term, $._atom)),
+    or_term: $ => sep2("/", $._atom),
+
+    _atom: $ => choice($.tag, $.group, $.neg),
+    neg: $ => seq("-", $._atom),
+    group: $ =>
+      seq(
+        "(",
+        repeat($._newline),
         optional(
           seq(
-            ">",
-            field("relation", $.subject_ref),
-            optional(seq("(", field("context", $.subject_ref), ")"))
+            sep1(repeat1($._newline), choice($._expr, $.subject)),
+            repeat($._newline)
           )
         ),
-        optional(seq(":", field("tags", $._tags))),
-        field("body", optional($.body))
+        ")"
       ),
-
-    _tags: $ => choice($.tag, $.tag_and, $.tag_or, $.tag_group, $.tag_neg),
-    tag_and: $ => prec.left(1, seq($._tags, ",", $._tags)),
-    tag_or: $ => prec.left(2, seq($._tags, "/", $._tags)),
-    tag_group: $ => seq("(", sep_newline($, $._tags), ")"),
-    tag_neg: $ => seq("-", $._tags),
 
     tag: $ => choice($.tag_plain, $.string),
 
@@ -56,9 +70,9 @@ module.exports = grammar({
   },
 });
 
-function sep_newline($, r) {
-  return seq(repeat($._newline), repeat(seq(r, repeat($._newline))));
-}
 function sep1(sep, r) {
   return seq(r, repeat(seq(sep, r)));
+}
+function sep2(sep, r) {
+  return seq(r, repeat1(seq(sep, r)));
 }

@@ -1,15 +1,139 @@
 [
   {
+    "type": "and_term",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "neg",
+          "named": true
+        },
+        {
+          "type": "or_term",
+          "named": true
+        },
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "body",
     "named": true,
     "root": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "and_term",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "neg",
+          "named": true
+        },
+        {
+          "type": "or_term",
+          "named": true
+        },
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "group",
+    "named": true,
     "fields": {},
     "children": {
       "multiple": true,
       "required": false,
       "types": [
         {
+          "type": "and_term",
+          "named": true
+        },
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "neg",
+          "named": true
+        },
+        {
+          "type": "or_term",
+          "named": true
+        },
+        {
           "type": "subject",
+          "named": true
+        },
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "neg",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "neg",
+          "named": true
+        },
+        {
+          "type": "tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "or_term",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "group",
+          "named": true
+        },
+        {
+          "type": "neg",
+          "named": true
+        },
+        {
+          "type": "tag",
           "named": true
         }
       ]
@@ -29,7 +153,23 @@
         "required": false,
         "types": [
           {
-            "type": "body",
+            "type": "and_term",
+            "named": true
+          },
+          {
+            "type": "group",
+            "named": true
+          },
+          {
+            "type": "neg",
+            "named": true
+          },
+          {
+            "type": "or_term",
+            "named": true
+          },
+          {
+            "type": "tag",
             "named": true
           }
         ]
@@ -49,7 +189,7 @@
         "required": false,
         "types": [
           {
-            "type": "tag_group",
+            "type": "group",
             "named": true
           }
         ]
@@ -61,16 +201,6 @@
           {
             "type": "subject_ref",
             "named": true
-          }
-        ]
-      },
-      "neg": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "-",
-            "named": false
           }
         ]
       },
@@ -90,32 +220,6 @@
         "types": [
           {
             "type": "tag",
-            "named": true
-          }
-        ]
-      },
-      "tags": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "tag",
-            "named": true
-          },
-          {
-            "type": "tag_and",
-            "named": true
-          },
-          {
-            "type": "tag_group",
-            "named": true
-          },
-          {
-            "type": "tag_neg",
-            "named": true
-          },
-          {
-            "type": "tag_or",
             "named": true
           }
         ]
@@ -151,130 +255,6 @@
         },
         {
           "type": "tag_plain",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "tag_and",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "tag",
-          "named": true
-        },
-        {
-          "type": "tag_and",
-          "named": true
-        },
-        {
-          "type": "tag_group",
-          "named": true
-        },
-        {
-          "type": "tag_neg",
-          "named": true
-        },
-        {
-          "type": "tag_or",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "tag_group",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "tag",
-          "named": true
-        },
-        {
-          "type": "tag_and",
-          "named": true
-        },
-        {
-          "type": "tag_group",
-          "named": true
-        },
-        {
-          "type": "tag_neg",
-          "named": true
-        },
-        {
-          "type": "tag_or",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "tag_neg",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "tag",
-          "named": true
-        },
-        {
-          "type": "tag_and",
-          "named": true
-        },
-        {
-          "type": "tag_group",
-          "named": true
-        },
-        {
-          "type": "tag_neg",
-          "named": true
-        },
-        {
-          "type": "tag_or",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "tag_or",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "tag",
-          "named": true
-        },
-        {
-          "type": "tag_and",
-          "named": true
-        },
-        {
-          "type": "tag_group",
-          "named": true
-        },
-        {
-          "type": "tag_neg",
-          "named": true
-        },
-        {
-          "type": "tag_or",
           "named": true
         }
       ]
@@ -331,13 +311,5 @@
   {
     "type": "tag_plain",
     "named": true
-  },
-  {
-    "type": "{",
-    "named": false
-  },
-  {
-    "type": "}",
-    "named": false
   }
 ]
